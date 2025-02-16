@@ -1,0 +1,64 @@
+{
+  "questions": [
+    {
+      "question": "Who was the first person to go to heaven without dying?",
+      "options": ["Moses", "Elijah", "Enoch", "Abraham"],
+      "correctOption": 2,
+      "points": 20
+    },
+    {
+      "question": "Which disciple did Jesus call 'the Rock'?",
+      "options": ["John", "Peter", "James", "Andrew"],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "What was the first bird Noah sent from the ark?",
+      "options": ["Dove", "Raven", "Sparrow", "Eagle"],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "Who was the oldest person mentioned in the Bible?",
+      "options": ["Noah", "Methuselah", "Adam", "Jared"],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "How many people were on the ark?",
+      "options": ["6", "8", "10", "12"],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "Which book of the Bible does not mention God?",
+      "options": ["Esther", "Song of Solomon", "Ecclesiastes", "Job"],
+      "correctOption": 0,
+      "points": 30
+    },
+    {
+      "question": "Who had a conversation with a donkey?",
+      "options": ["Elijah", "Balaam", "Moses", "Aaron"],
+      "correctOption": 1,
+      "points": 30
+    },
+    {
+      "question": "Which biblical character's name means 'laughter'?",
+      "options": ["Isaiah", "Isaac", "Jacob", "Ishmael"],
+      "correctOption": 1,
+      "points": 30
+    },
+    {
+      "question": "What was Paul's name before his conversion?",
+      "options": ["Peter", "Saul", "Silas", "Simon"],
+      "correctOption": 1,
+      "points": 30
+    },
+    {
+      "question": "How many times did Peter deny Jesus?",
+      "options": ["2", "3", "4", "5"],
+      "correctOption": 1,
+      "points": 30
+    }
+  ]
+}
