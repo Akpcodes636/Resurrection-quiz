@@ -1,3 +1,4 @@
+import { BrowserRouter } from "react-router-dom";
 import Header from "./Header";
 import Main from "./Main";
 import Loader from "./Loader";
@@ -10,32 +11,33 @@ import FinishScreen from "./FinishScreen";
 import Footer from "./Footer";
 import Timer from "./Timer";
 import { useQuiz } from "../contexts/QuizContext";
-import PlayerSetup from "./MultiplePlayer";
+import GoBack from "./Goback";
 
 export default function App() {
   const { status } = useQuiz();
 
   return (
-    <div className="app">
-      <Header />
 
-      <Main>
-        {status === "loading" && <Loader />}
-        {status === "error" && <Error />}
-        {status === "ready" && <StartScreen />}
-        {status === "active" && (
-          <>
-          {/* <PlayerSetup/> */}
-            <Progress />
-            <Question />
-            <Footer>
-              <Timer />
-              <NextButton />
-            </Footer>
-          </>
-        )}
-        {status === "finished" && <FinishScreen />}
-      </Main>
-    </div>
+      <div className="app">
+        <Header />
+        <Main>
+          {status === "loading" && <Loader />}
+          {status === "error" && <Error />}
+          {status === "ready" && <StartScreen />}
+          {status === "active" && (
+            <>
+              <Progress />
+              {/* <GoBack /> */}
+              <Question />
+              <Footer>
+                <Timer />
+                <NextButton />
+              </Footer>
+            </>
+          )}
+          {status === "finished" && <FinishScreen />}
+        </Main>
+      </div>
+
   );
 }

@@ -6,9 +6,7 @@ const SECS_PER_QUESTION = 30;
 
 const initialState = {
   questions: [],
-
-  // 'loading', 'error', 'ready', 'active', 'finished'
-  status: "loading",
+  status: "loading", // 'loading', 'error', 'ready', 'active', 'finished'
   index: 0,
   answer: null,
   points: 0,
@@ -21,7 +19,7 @@ function reducer(state, action) {
     case "dataReceived":
       return {
         ...state,
-        questions: action.payload,
+        questions: Array.isArray(action.payload) ? action.payload : [],
         status: "ready",
       };
     case "dataFailed":
@@ -37,7 +35,6 @@ function reducer(state, action) {
       };
     case "newAnswer":
       const question = state.questions.at(state.index);
-
       return {
         ...state,
         answer: action.payload,
@@ -48,6 +45,8 @@ function reducer(state, action) {
       };
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null };
+    case "previousQuestion":
+      return { ...state, index: state.index - 1, answer: null };
     case "finish":
       return {
         ...state,
@@ -57,16 +56,14 @@ function reducer(state, action) {
       };
     case "restart":
       return { ...initialState, questions: state.questions, status: "ready" };
-
     case "tick":
       return {
         ...state,
         secondsRemaining: state.secondsRemaining - 1,
         status: state.secondsRemaining === 0 ? "finished" : state.status,
       };
-
     default:
-      throw new Error("Action unkonwn");
+      throw new Error("Action unknown");
   }
 }
 
@@ -83,9 +80,12 @@ function QuizProvider({ children }) {
   );
 
   useEffect(function () {
-    fetch("http://localhost:3001/questions")
+    fetch("https://akpcodes636.github.io/host_api/question.json")
       .then((res) => res.json())
-      .then((data) => dispatch({ type: "dataReceived", payload: data }))
+      .then((data) => {
+        console.log(data);  // Verify that `data.questions` is the array
+        dispatch({ type: "dataReceived", payload: data.questions });
+      })
       .catch((err) => dispatch({ type: "dataFailed" }));
   }, []);
 
@@ -101,7 +101,6 @@ function QuizProvider({ children }) {
         secondsRemaining,
         numQuestions,
         maxPossiblePoints,
-
         dispatch,
       }}
     >

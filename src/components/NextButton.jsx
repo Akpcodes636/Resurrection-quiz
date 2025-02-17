@@ -1,29 +1,38 @@
 import { useQuiz } from "../contexts/QuizContext";
 
-function NextButton() {
+function NavigationButtons() {
   const { dispatch, answer, index, numQuestions } = useQuiz();
 
   if (answer === null) return null;
 
-  if (index < numQuestions - 1)
-    return (
-      <button
-        className="btn btn-ui"
-        onClick={() => dispatch({ type: "nextQuestion" })}
-      >
-        Next
-      </button>
-    );
+  return (
+    <div>
+      {index > 0 && (
+        <button
+          className="btn btn-ui"
+          onClick={() => dispatch({ type: "previousQuestion" })}
+        >
+          Back
+        </button>
+      )}
 
-  if (index === numQuestions - 1)
-    return (
-      <button
-        className="btn btn-ui"
-        onClick={() => dispatch({ type: "finish" })}
-      >
-        Finish
-      </button>
-    );
+      {index < numQuestions - 1 ? (
+        <button
+          className="btn btn-ui"
+          onClick={() => dispatch({ type: "nextQuestion" })}
+        >
+          Next
+        </button>
+      ) : (
+        <button
+          className="btn btn-ui"
+          onClick={() => dispatch({ type: "finish" })}
+        >
+          Finish
+        </button>
+      )}
+    </div>
+  );
 }
 
-export default NextButton;
+export default NavigationButtons;
